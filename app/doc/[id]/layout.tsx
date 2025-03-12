@@ -1,18 +1,16 @@
 import RoomProvider from "@/components/RoomProvider";
-import { auth } from "@clerk/nextjs/server"
+import { auth } from "@clerk/nextjs/server";
 
-
-function DocLayer({children,params: 
-    {id}
-}:{children:React.ReactNode;
-    params: {id:string}
+export default async function DocLayer({
+  children,
+  params,
+}: {
+  children: React.ReactNode;
+  params: Promise<{ id: string }>; // Ensure params is treated as a Promise
 }) {
-    auth.protect();
-  return (
-    <RoomProvider roomId={id}>
-      {children}
-    </RoomProvider>
-  )
-}
+  auth.protect();
 
-export default DocLayer
+  const { id } = await params; // Await params before extracting id
+
+  return <RoomProvider roomId={id}>{children}</RoomProvider>;
+}

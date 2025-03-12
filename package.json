@@ -9,16 +9,41 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@blocknote/core": "^0.25.1",
+    "@blocknote/mantine": "^0.25.1",
+    "@blocknote/react": "^0.25.1",
+    "@blocknote/shadcn": "^0.25.1",
+    "@clerk/nextjs": "^6.12.4",
+    "@liveblocks/client": "^2.20.0",
+    "@liveblocks/node": "^2.20.0",
+    "@liveblocks/react": "^2.20.0",
+    "@liveblocks/yjs": "^2.20.0",
+    "@opentelemetry/api": "^1.9.0",
+    "@radix-ui/react-dialog": "^1.1.6",
+    "@radix-ui/react-slot": "^1.1.2",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "firebase": "^11.4.0",
+    "firebase-admin": "^13.2.0",
+    "framer-motion": "^12.5.0",
+    "lucide-react": "^0.479.0",
+    "next": "15.2.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "next": "15.2.1"
+    "react-firebase-hooks": "^5.1.1",
+    "tailwind-merge": "^3.0.2",
+    "vaul": "^1.1.2",
+    "yjs": "^13.6.24"
   },
   "devDependencies": {
-    "typescript": "^5",
+    "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "@tailwindcss/postcss": "^4",
-    "tailwindcss": "^4"
+    "autoprefixer": "^10.4.21",
+    "postcss": "^8.5.3",
+    "tailwindcss": "^4.0.12",
+    "tailwindcss-animate": "^1.0.7",
+    "typescript": "^5"
   }
 }

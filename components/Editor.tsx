@@ -59,12 +59,16 @@ function Editor() {
     useEffect(() => {
         const yDoc = new Y.Doc();
         const yProvider = new LiveblocksYjsProvider(room,yDoc);
+
+        yProvider.connect();
+    
         setDoc(yDoc);
         setProvider(yProvider);
-
+        yProvider.connect();
         return () => {
-            yDoc?.destroy();
-            yProvider?.destroy();
+            yProvider.disconnect();
+            //yDoc?.destroy();
+            //yProvider?.destroy();
         }
     },[room])
 

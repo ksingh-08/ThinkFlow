@@ -111,7 +111,7 @@ const Sidebar = () => {
 {groupedData.editor.length > 0 && (
     <>
     
-    <h2 className="text-gray-500 font-semibold text-sm">
+    <h2 className="text-gray-500 font-semibold text-sm text-center">
         Shared with Me
     </h2>
     {groupedData.editor.map((doc) => (

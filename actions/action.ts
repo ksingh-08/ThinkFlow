@@ -5,23 +5,34 @@ import liveblocks from "@/lib/liveblocks";
 import { auth } from "@clerk/nextjs/server"
 
 export async function createNewDocument() {
+    // Get authentication session
+    const { sessionClaims } = await auth();
 
-    auth.protect();
-    const {sessionClaims} = await auth();
+    // If user is not authenticated, throw an error
+    if (!sessionClaims?.email) {
+        throw new Error("Unauthorized: You must be signed in.");
+    }
 
+    // Proceed with creating the document
     const docCollectionRef = adminDb.collection("documents");
     const docRef = await docCollectionRef.add({
-        title : "New Doc"
-    })
-    await adminDb.collection('users').doc(sessionClaims?.email!).collection('rooms').doc(docRef.id).set({
-     userId: sessionClaims?.email!,
-     role:"owner",
-     createdAt: new Date(),
-     roomId : docRef.id,
-    })
+        title: "New Doc",
+    });
 
-    return {docId : docRef.id};
+    // Store user info in Firestore
+    await adminDb
+        .collection("users")
+        .doc(sessionClaims.email)
+        .collection("rooms")
+        .doc(docRef.id)
+        .set({
+            userId: sessionClaims.email,
+            role: "owner",
+            createdAt: new Date(),
+            roomId: docRef.id,
+        });
 
+    return { docId: docRef.id };
 }
 
 export async function deleteDocument(roomId : string){

@@ -44,11 +44,7 @@ function BlockNote({doc,provider,darkMode}: EditorProps) {
       }/>
     </div>
   )
-}
-
-
-
-
+} 
 
 function Editor() {
     const room = useRoom()

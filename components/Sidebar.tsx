@@ -78,6 +78,7 @@ const Sidebar = () => {
     },[data])
     const menuOptions = (
         <>
+        {console.log(user?.emailAddresses[0].toString())}
             <div className="text-center">
             <NewDocumentButton/>
             </div>
@@ -86,7 +87,6 @@ const Sidebar = () => {
             
             {groupedData.owner.length === 0 ? (
                 <h2 className="text-gray-500 font-semibold text-sm text-center">
-                    
                     No Documents Found
                 </h2>
             ):(
